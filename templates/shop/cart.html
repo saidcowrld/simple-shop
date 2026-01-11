@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Cart | Simple Shop{% endblock %}
+
+{% block content %}
+
+<section class="cart-section">
+    <h2 class="section-title">Your Cart</h2>
+
+    {% if items %}
+    <div class="cart-table">
+
+        {% for item in items %}
+        <div class="cart-row">
+            <div class="cart-name">{{ item[1] }}</div>
+
+            <div class="cart-price">${{ item[2] }}</div>
+
+            <div class="cart-qty">
+                <a href="/cart/decrease/{{ item[0] }}" class="qty-btn">−</a>
+                <span>{{ item[3] }}</span>
+                <a href="/cart/increase/{{ item[0] }}" class="qty-btn">+</a>
+            </div>
+
+            <div class="cart-total">
+                ${{ item[2] * item[3] }}
+            </div>
+
+            <a href="/cart/remove/{{ item[0] }}" class="cart-remove">✕</a>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="cart-summary">
+        <span>Total:</span>
+        <strong>${{ total }}</strong>
+    </div>
+
+    <div class="cart-actions">
+        <a href="/dashboard" class="btn-secondary">Continue shopping</a>
+        <a href="/checkout" class="btn-primary">Checkout</a>
+    </div>
+
+    {% else %}
+    <div class="empty-cart">
+        <div class="empty-icon">🛒</div>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven’t added anything yet.</p>
+        <a href="/dashboard" class="btn-primary">Go shopping</a>
+    </div>
+    {% endif %}
+    
+</section>
+
+{% endblock %}

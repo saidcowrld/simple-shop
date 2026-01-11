@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/shop.css">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-inner">
+
+        <!-- Admin logo -->
+        <div class="logo">Admin Panel</div>
+
+        <!-- Admin navigation -->
+        <nav class="top-menu">
+            <a href="/admin/orders"
+               class="{% if active_page == 'orders' %}active{% endif %}">
+                Orders
+            </a>
+
+            <a href="/admin/users"
+               class="{% if active_page == 'users' %}active{% endif %}">
+                Users
+            </a>
+
+            <a href="/logout">Logout</a>
+        </nav>
+
+    </div>
+</header>
+
+<main style="max-width:1200px;margin:40px auto;">
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

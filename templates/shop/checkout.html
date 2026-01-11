@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout | Simple Shop{% endblock %}
+
+{% block content %}
+
+
+<section class="checkout-section">
+    <h2 class="section-title">Checkout</h2>
+
+    <div class="checkout-grid">
+
+        <!-- ORDER SUMMARY -->
+        <div class="checkout-box">
+            <h3>Your Order</h3>
+
+            <ul class="order-list">
+                {% for item in items %}
+                <li>
+                    <span>{{ item[0] }} × {{ item[2] }}</span>
+                    <strong>${{ item[1] * item[2] }}</strong>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <div class="order-total">
+                <span>Total</span>
+                <strong>${{ total }}</strong>
+            </div>
+        </div>
+
+        <!-- PAYMENT FORM -->
+        <div class="checkout-box">
+            <h3>Payment Details</h3>
+
+            <form method="post" class="checkout-form">
+                <label>Delivery Address</label>
+                <input type="text" name="address" required>
+
+                <label>Card Number</label>
+                <input type="text" name="card" required>
+
+                <button type="submit" class="btn-primary">
+                    Place Order
+                </button>
+            </form>
+
+            <a href="/cart" class="back-btn">← Back to cart</a>
+            
+</div>
+
+    </div>
+</section>
+
+{% endblock %}

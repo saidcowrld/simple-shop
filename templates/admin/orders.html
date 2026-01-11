@@ -1,0 +1,33 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Orders | Admin{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">Orders</h2>
+
+<div class="cart-table">
+    <div class="cart-row" style="font-weight:600;">
+        <div>ID</div>
+        <div>User</div>
+        <div>Total</div>
+        <div>Address</div>
+        <div>Action</div>
+    </div>
+
+    {% for o in orders %}
+    <div class="cart-row">
+        <div>#{{ o[0] }}</div>
+        <div>{{ o[1] }}</div>
+        <div>${{ o[2] }}</div>
+        <div>{{ o[3] }}</div>
+        <div>
+            <a href="/admin/order/{{ o[0] }}" class="btn-secondary">
+                View
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

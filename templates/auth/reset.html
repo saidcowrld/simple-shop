@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset Password | Simple Shop</title>
+    <link rel="stylesheet" href="/static/css/shop.css">
+</head>
+<body>
+
+<div class="auth-page">
+    <div class="auth-box">
+
+        {% if step == "find" %}
+            <h2>Reset Password</h2>
+            <p>Enter username or email</p>
+
+            {% if error %}
+            <div class="auth-error">{{ error }}</div>
+            {% endif %}
+
+            <form method="post">
+                <label>Username or Email</label>
+                <input type="text" name="identifier" required>
+
+                <button class="auth-btn" type="submit">
+                    Continue
+                </button>
+            </form>
+
+        {% elif step == "new_password" %}
+            <h2>New Password</h2>
+            <p>Set a new password</p>
+
+            {% if error %}
+            <div class="auth-error">{{ error }}</div>
+            {% endif %}
+
+            <form method="post">
+                <input type="hidden" name="identifier" value="{{ identifier }}">
+
+                <label>New Password</label>
+                <input type="password" name="password" required>
+
+                <label>Repeat Password</label>
+                <input type="password" name="password2" required>
+
+                <button class="auth-btn" type="submit">
+                    Save Password
+                </button>
+            </form>
+        {% endif %}
+
+        <div class="auth-links">
+            <a href="/login">Back to login</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

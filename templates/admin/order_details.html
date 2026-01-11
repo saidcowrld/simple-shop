@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order #{{ order_id }}</title>
+    <link rel="stylesheet" href="/static/css/shop.css">
+</head>
+<body>
+
+<section class="products-section">
+    <h2 class="section-title">Order #{{ order_id }}</h2>
+
+    <div class="cart-table">
+        {% for i in items %}
+        <div class="cart-row">
+            <div>{{ i[0] }}</div>
+            <div>${{ i[1] }}</div>
+            <div>x{{ i[2] }}</div>
+            <div>${{ i[1] * i[2] }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/admin/orders" class="admin-back-btn">
+        ← Back to orders
+    </a>    
+</section>
+
+</body>
+</html>

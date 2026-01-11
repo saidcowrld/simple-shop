@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}My Account | Simple Shop{% endblock %}
+
+{% block content %}
+
+<section class="account-section">
+    <h2 class="section-title">My Account</h2>
+
+    <div class="account-grid">
+
+        <!-- USER INFO -->
+        <div class="account-box">
+            <h3>User Information</h3>
+
+            <div class="info-row">
+                <span>Username</span>
+                <strong>{{ user[0] }}</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Email</span>
+                <strong class="info-value">
+                    {{ user[1] if user[1] else "Not set" }}
+                </strong>
+            </div>
+
+            <a href="/profile/edit" class="btn-secondary account-btn">
+                Change Info
+            </a>
+        </div>
+
+        <!-- ORDER HISTORY -->
+        <div class="account-box">
+            <h3>Order History</h3>
+
+            {% if orders %}
+            <ul class="orders-list">
+                {% for o in orders %}
+                <li>
+                    <div>
+                        <strong>Order #{{ o[0] }}</strong>
+                        <span>Address: {{ o[2] }}</span>
+                    </div>
+                    <div class="order-price">
+                        ${{ o[1] }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p class="empty-orders">No orders yet.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <a href="/dashboard" class="back-btn">
+        ← Back to shop
+    </a>    
+</section>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Simple Shop{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/shop.css">
+</head>
+
+<script>
+    function clearSearch() {
+        const input = document.getElementById("searchInput");
+        input.value = "";
+        input.focus();
+    }
+    </script>
+    
+<body>
+
+<header class="main-header">
+    <div class="header-inner">
+        <div class="logo">Simple Shop</div>
+
+        <form class="search-bar" action="/search" method="get">
+            <input type="search" name="q" placeholder="Search products...">
+            <button type="submit">Search</button>
+        </form>        
+        
+
+        <nav class="top-menu">
+            <a href="/dashboard">Home</a>
+
+            {% if not session.get("is_admin") %}
+                <a href="/cart">Cart</a>
+            {% endif %}
+
+            <a href="/profile">My Account</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+
+        <div class="footer-col">
+            <h3>Simple Shop</h3>
+            <p>Your simple online store with quality products.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <a href="/dashboard">Home</a>
+            <a href="/cart">Cart</a>
+            <a href="/profile">My Account</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <p>Email: support@simpleshop.com</p>
+            <p>Phone: +998 90 000 00 00</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Simple Shop. All rights reserved.
+    </div>
+</footer>
+
+
+</body>
+</html>

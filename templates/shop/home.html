@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Simple Shop{% endblock %}
+
+{% block content %}
+
+<!-- ===== BANNER SLIDER ===== -->
+<section class="hero-banner">
+    <div class="slider">
+
+        <div class="slide active"
+             style="background-image:url('/static/images/banner1.jpg')"></div>
+
+        <div class="slide"
+             style="background-image:url('/static/images/banner2.jpg')"></div>
+
+        <div class="slide"
+             style="background-image:url('/static/images/banner3.jpg')"></div>
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== CATEGORIES ===== -->
+<section class="categories-section" id="categories">
+    <h2 class="section-title">Categories</h2>
+
+    <div class="categories-grid">
+        {% for c in categories %}
+        <a href="/category/{{ c[0] }}" class="category-card">
+            <img src="/static/images/categories/{{ c[1]|lower }}.png" alt="{{ c[1] }}">
+            <span>{{ c[1] }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="products-section">
+    <h2 class="section-title">Products</h2>
+
+    <div class="products-grid">
+        {% for p in products %}
+        <div class="product-card">
+            <img src="/static/images/products/{{ p[3] }}"
+                 onerror="this.src='/static/images/products/default.png'">
+
+            <h3>{{ p[1] }}</h3>
+
+            <div class="product-bottom">
+                <span class="price">${{ p[2] }}</span>
+
+                {% if not is_admin %}
+                <a href="/add_to_cart/{{ p[0] }}" class="cart-circle" title="Add to cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"></path>
+                    </svg>
+                </a>
+                {% else %}
+                <span class="admin-view">Admin</span>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ===== PROMO BANNER ===== -->
+<a href="#categories" class="image-banner">
+    <img src="/static/images/promo-banner.jpg" alt="Promo banner">
+</a>
+
+<script src="/static/js/banners.js"></script>
+
+{% endblock %}

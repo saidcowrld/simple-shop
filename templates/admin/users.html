@@ -1,0 +1,33 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Users | Admin{% endblock %}
+
+{% block content %}
+
+<h2 class="section-title">Users</h2>
+
+<div class="cart-table">
+    <div class="cart-row" style="font-weight:600;">
+        <div>ID</div>
+        <div>Username</div>
+        <div>Email</div>
+        <div>Role</div>
+    </div>
+
+    {% for u in users %}
+    <div class="cart-row">
+        <div>#{{ u[0] }}</div>
+        <div>{{ u[1] }}</div>
+        <div>{{ u[2] or "—" }}</div>
+        <div>
+            {% if u[3] %}
+                <span class="admin-role admin">Admin</span>
+            {% else %}
+                <span class="admin-role user">User</span>
+            {% endif %}
+        </div>        
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

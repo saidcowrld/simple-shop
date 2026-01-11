@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Change Info | Simple Shop{% endblock %}
+
+{% block content %}
+
+<section class="edit-section">
+    <h2 class="section-title">Change Information</h2>
+
+    <div class="edit-box">
+
+        {% if message %}
+        <div class="success-alert">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error-alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="post" class="edit-form">
+
+            <label>New Email</label>
+            <input type="email" name="email" placeholder="Enter new email">
+
+            <label>New Password</label>
+            <input type="password" name="password1" placeholder="Enter new password">
+
+            <label>Repeat Password</label>
+            <input type="password" name="password2" placeholder="Repeat new password">
+
+            <button type="submit" class="btn-primary">
+                Save Changes
+            </button>
+        </form>
+
+        <a href="/profile" class="back-btn">
+            ← Back to My Account
+        </a>        
+    </div>
+</section>
+
+{% endblock %}

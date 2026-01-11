@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Order Completed | Simple Shop{% endblock %}
+
+{% block content %}
+
+<section class="success-section">
+    <div class="success-box">
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>Order Successful!</h2>
+
+        <p>Your order has been placed successfully.</p>
+        <p>We will contact you soon for delivery.</p>
+
+        <a href="/dashboard" class="btn-primary success-btn">
+            Continue shopping
+        </a>
+    </div>
+</section>
+
+{% endblock %}

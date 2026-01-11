@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Simple Shop</title>
+    <link rel="stylesheet" href="/static/css/shop.css">
+</head>
+<body>
+
+<div class="auth-page">
+    <div class="auth-box">
+        <h2>Login</h2>
+        <p>Welcome back to Simple Shop</p>
+
+        {% if error %}
+        <div class="auth-error">{{ error }}</div>
+        {% endif %}
+
+        <form method="post">
+            <label>Username</label>
+            <input type="text" name="username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <button class="auth-btn" type="submit">
+                Login
+            </button>
+        </form>
+
+        <div class="auth-links">
+            <a href="/reset">Forgot password?</a><br><br>
+            <a href="/register">Create new account</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
