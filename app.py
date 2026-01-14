@@ -293,6 +293,24 @@ def cart_decrease(product_id):
     con.close()
     return redirect("/cart")
 
+@app.route("/cart/remove/<int:product_id>")
+def cart_remove(product_id):
+    if "user_id" not in session:
+        return redirect("/login")
+
+    con = get_db()
+    cur = con.cursor()
+
+    cur.execute(
+        "DELETE FROM cart WHERE user_id=? AND product_id=?",
+        (session["user_id"], product_id)
+    )
+
+    con.commit()
+    con.close()
+
+    return redirect("/cart")
+
 
 # =========================
 # CHECKOUT PAGE
